@@ -1,0 +1,20 @@
+
+class Activity():
+    def __init__(self):
+        self.starttime = None
+        self.endtime = None
+        self.nodes = {}
+        self.edges = {}
+
+    def AddEdge(self, aedge, srcNode, dstNode):
+        if(len(self.edges) == 0):
+            self.starttime = aedge.timesig
+            self.endtime = aedge.timesig
+        else:
+            if(aedge.timesig < self.starttime):
+                self.starttime = aedge.timesig
+            if(aedge.timesig > self.endtime):
+                self.endtime = aedge.timesig
+        self.edges[aedge.idval] = aedge
+        self.nodes[srcNode.idval] = srcNode
+        self.nodes[dstNode.idval] = dstNode
